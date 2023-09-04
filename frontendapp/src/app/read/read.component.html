@@ -1,0 +1,34 @@
+<!--show extra msg-->
+<div *ngIf="successMsg" class="alert alert-danger alert-dismissible fade show" role="alert">
+  <strong>{{successMsg}}</strong>
+  <button type="button" class="close" data-bs-dismiss="alert" aria-label="Close">
+  <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+<table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">Snovs </th>
+        <th scope="col">Fullname</th>
+        <th scope="col">Email</th>
+        <th scope="col">Phoneno</th>
+        <th scope="col">Delete</th>
+        <th scope="col">Update</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let usr of readUser">
+        <th scope="row">{{usr.Id}}</th>
+        <td>{{usr.Fullname}}</td>
+        <td>{{usr.Email}}</td>
+        <td>{{usr.Phoneno}}</td>
+        <td>
+          <button class="btn btn-danger" (click)="deleteId(usr.Id)">Delete</button>
+        </td>
+        <td>
+          <a [routerLink]="['/create',usr.Id]" class="btn btn-success">Update</a>
+        </td>
+      </tr>
+      
+    </tbody>
+  </table>

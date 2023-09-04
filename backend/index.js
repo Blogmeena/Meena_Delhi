@@ -5,7 +5,7 @@ const mysql=require('mysql2');
 const app=express();
 app.use(cors());
 app.use(bodyparser.json());
-//connect MySQL database
+//connect MySQL databasenode
 const db=mysql.createConnection({
     host:'localhost',
     user:'root',
@@ -80,7 +80,7 @@ app.post('/user',(req,res)=>{
             console.log(err,'errs');
         }
         res.send({
-            message:"data not found dear!",
+            message:"data added ",
             data:results
 
     });
@@ -109,8 +109,9 @@ app.put('/user/:Id',(req,res)=>{
 })
 //Delete data
 app.delete('/user/:Id',(req,res)=>{
-    console.log(req.body,'post data success');
-    uId=req.params.Id;
+    console.log(req.body,'data recieve');
+     uId=req.params.Id;
+    console.log(uId);
     let qr="delete from user where Id='"+uId+"'";
     db.query(qr,(err,results)=>{
         if(err){
